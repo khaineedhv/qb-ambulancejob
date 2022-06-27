@@ -35,7 +35,7 @@ function TakeOutVehicle(vehicleInfo)
         if Config.VehicleSettings[vehicleInfo] ~= nil then
             QBCore.Shared.SetDefaultVehicleExtras(veh, Config.VehicleSettings[vehicleInfo].extras)
         end
-        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        exports['qb-vehiclekeys']:SetVehicleKey(GetVehicleNumberPlateText(veh), true)
         SetVehicleEngineOn(veh, true, true)
     end, coords, true)
 end
@@ -354,7 +354,7 @@ local function EMSHelicopter(k)
                             SetVehicleLivery(veh, 1) -- Ambulance Livery
                             exports['LegacyFuel']:SetFuel(veh, 100.0)
                             TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                            TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+                            exports['qb-vehiclekeys']:SetVehicleKey(GetVehicleNumberPlateText(veh), true)
                             SetVehicleEngineOn(veh, true, true)
                         end, coords, true)
                     end
